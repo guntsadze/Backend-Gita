@@ -616,3 +616,64 @@
 // }
 
 // console.log(validatePIN(pin));
+
+// const users = [
+//   { id: 1, name: "giorig", age: 24, isSmoker: true },
+//   { id: 2, name: "nika", age: 44, isSmoker: false },
+//   { id: 3, name: "mariami", age: 32, isSmoker: true },
+//   { id: 4, name: "tekla", age: 21, isSmoker: false },
+//   { id: 5, name: "daviti", age: 24, isSmoker: true },
+// ];
+
+// const usersName = users.map((n) => n.name);
+
+// console.log(usersName);
+
+// const products = [
+//   { name: "iphone", price: 1500 },
+//   { name: "macbook", price: 3500 },
+//   { name: "lenovo", price: 2500 },
+//   { name: "microphone", price: 100 },
+//   { name: "headset", price: 500 },
+//   { name: "samsung", price: 1800 },
+// ];
+
+// const sum = products
+//   .filter((f) => f.price > 1000)
+//   .reduce((prev, curr) => prev + curr.price, 0);
+
+// console.log(sum);
+
+// const students = [
+//   { name: "Ana", scores: [80, 90, 100] },
+//   { name: "Nika", scores: [70, 60, 75] },
+//   { name: "Luka", scores: [95, 85, 90] },
+// ];
+
+// const groupedByAge = users.reduce((prev, curr) => {
+//   const { name, age } = curr;
+//   if (!prev[age]) {
+//     prev[age] = [];
+//   }
+
+//   prev[age].push(name);
+
+//   return prev;
+// }, {});
+// console.log("🚀 ~ groupedByAge:", groupedByAge);
+
+// const students = [
+//   { name: "Ana", scores: [80, 90, 100] },
+//   { name: "Nika", scores: [70, 60, 75] },
+//   { name: "Luka", scores: [95, 85, 90] },
+// ];
+
+// const result = students
+//   .map((student) => ({
+//     ...student,
+//     avarage:
+//       student.scores.reduce((tot, curr) => tot + curr) / student.scores.length,
+//   }))
+//   .sort((a, b) => b.avarage - a.avarage);
+
+// console.log(result);
