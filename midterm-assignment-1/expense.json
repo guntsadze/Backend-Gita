@@ -1,0 +1,32 @@
+[
+  {
+    "id": 3,
+    "category": "tetete",
+    "price": 2134,
+    "createdAt": "2026-06-18T17:46:39.069Z"
+  },
+  {
+    "id": 4,
+    "category": "tetete",
+    "price": 2134,
+    "createdAt": "2025-06-18T17:46:39.069Z"
+  },
+  {
+    "id": 5,
+    "category": "pirveli",
+    "price": null,
+    "createdAt": "2026-06-18T18:21:01.240Z"
+  },
+  {
+    "id": 6,
+    "category": "pirveli",
+    "price": 21,
+    "createdAt": "2026-06-18T18:22:05.735Z"
+  },
+  {
+    "id": 7,
+    "category": "pirveli",
+    "price": 211221,
+    "createdAt": "2026-06-18T18:22:51.591Z"
+  }
+]
