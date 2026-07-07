@@ -1,0 +1,18 @@
+<div class="card">
+  <div>
+    <h3 style="margin: 0 0 5px 0; color: #fff">
+      <%= expense.title %> -
+      <span style="color: #4ade80"><%= expense.amount %> ₾</span>
+    </h3>
+    <small style="color: #5c6773"
+      >კატეგორია:
+      <span style="color: #ffb454"><%= expense.category %></span></small
+    >
+  </div>
+  <div class="actions">
+    <a href="/edit/<%= expense.id %>"><button>შეცვლა</button></a>
+    <form action="/api/expenses/<%= expense.id %>/delete" method="POST">
+      <button class="delete" type="submit">წაშლა</button>
+    </form>
+  </div>
+</div>

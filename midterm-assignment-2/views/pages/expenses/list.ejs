@@ -1,0 +1,29 @@
+<%- include('../../partials/header') %>
+
+<form action="/api/expenses" method="POST">
+    <input type="text" name="title" placeholder="დასახელება" required>
+    <input type="number" name="amount" placeholder="თანხა" required>
+    <input type="text" name="category" placeholder="კატეგორია" required>
+    <button type="submit">დამატება</button>
+</form>
+
+<hr style="border-color: #232b38; margin: 20px 0;">
+
+<form action="/" method="GET">
+    <input type="text" name="category" placeholder="ჩაწერეთ კატეგორია..." value="<%= currentCategory %>">
+    <button type="submit">ძებნა</button>
+    <% if (currentCategory) { %>
+        <a href="/"><button type="button" style="background: #2d3545;">გასუფთავება</button></a>
+    <% } %>
+</form>
+
+<% if (expenses.length === 0) { %>
+    <p style="color: #5c6773;">სია ცარიელია.</p>
+<% } else { %>
+    <% expenses.forEach(expense => { %>
+        <%- include('../../partials/expense-card', { expense: expense }) %>
+    <% }) %>
+<% } %>
+
+</body>
+</html>
