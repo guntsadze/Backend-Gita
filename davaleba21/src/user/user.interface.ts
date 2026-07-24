@@ -1,8 +1,10 @@
+import { Gender } from './dto/get-users.dto';
+
 export interface IUser {
   id: number;
   firstName: string;
   lastName: string;
   email: string;
-  phoneNumber: string;
-  gender: string;
+  phoneNumber: number;
+  gender?: Gender;
 }

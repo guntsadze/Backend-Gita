@@ -24,8 +24,18 @@ export class ExpensesService {
     },
   ];
 
-  getExpenses(): IExpense[] {
-    return this.expenses;
+  getExpenses({ page = 1, take = 30 }) {
+    const start = (page - 1) * take;
+    const stop = page * take;
+
+    const data = this.expenses.slice(start, stop);
+
+    return {
+      expenses: data,
+      total: this.expenses.length,
+      page,
+      limit: take,
+    };
   }
 
   createExpense({
