@@ -29,4 +29,12 @@ export class CreateUserDto {
   @IsOptional()
   @IsEnum(Gender)
   gender?: Gender;
+
+  // @IsOptional()
+  // @IsString()
+  // subscriptionStartDate?: string;
+
+  // @IsOptional()
+  // @IsString()
+  // subscriptionEndDate?: string;
 }

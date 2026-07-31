@@ -55,4 +55,9 @@ export class UsersController {
   updateById(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.updateUserById(Number(id), updateUserDto);
   }
+
+  @Patch('upgrade-subscription/:id')
+  upgradeSubscription(@Param('id') id: string) {
+    return this.usersService.upgradeSubscription(Number(id));
+  }
 }

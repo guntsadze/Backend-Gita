@@ -1,4 +1,9 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import {
+  HttpException,
+  HttpStatus,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { IUser } from './user.interface';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -14,6 +19,8 @@ export class UsersService {
       email: '1@1.com',
       phoneNumber: 121211,
       gender: Gender.MALE,
+      subscriptionStartDate: '2026-01-01',
+      subscriptionEndDate: '2026-02-01',
     },
     {
       id: 2,
@@ -22,6 +29,8 @@ export class UsersService {
       email: '2@2.com',
       phoneNumber: 121211,
       gender: Gender.FEMALE,
+      subscriptionStartDate: '2026-01-01',
+      subscriptionEndDate: '2026-02-01',
     },
   ];
 
@@ -59,13 +68,22 @@ export class UsersService {
   }: CreateUserDto): IUser {
     const lastId = this.users[this.users.length - 1]?.id || 0;
 
+    const now = new Date();
+    const subscriptionStartDate = now.toISOString();
+
+    const endDate = new Date(now);
+    endDate.setMonth(endDate.getMonth() + 1);
+    const subscriptionEndDate = endDate.toISOString();
+
     const newUser = {
+      id: lastId + 1,
       firstName,
       lastName,
       email,
       phoneNumber,
       gender,
-      id: lastId + 1,
+      subscriptionStartDate,
+      subscriptionEndDate,
     };
 
     this.users.push(newUser);
@@ -120,5 +138,26 @@ export class UsersService {
     };
 
     return this.users[index];
+  }
+
+  findByEmail(email: string): IUser | undefined {
+    return this.users.find((u) => u.email === email);
+  }
+
+  upgradeSubscription(id: number): IUser {
+    const user = this.users.find((u) => u.id === id);
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    const currentEndDate = new Date(user.subscriptionEndDate);
+    const now = new Date();
+    const baseDate = currentEndDate > now ? currentEndDate : now;
+
+    baseDate.setMonth(baseDate.getMonth() + 1);
+
+    user.subscriptionEndDate = baseDate.toISOString();
+
+    return user;
   }
 }

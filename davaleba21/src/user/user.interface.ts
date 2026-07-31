@@ -7,4 +7,6 @@ export interface IUser {
   email: string;
   phoneNumber: number;
   gender?: Gender;
+  subscriptionStartDate: string;
+  subscriptionEndDate: string;
 }
